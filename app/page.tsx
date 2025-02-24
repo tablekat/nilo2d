@@ -12,8 +12,8 @@ export default function Home() {
 
   // Initialize socket connection
   useEffect(() => {
-    const socketIo = io(process.env.NEXT_PUBLIC_SOCKET_URL || '', {
-      path: '/api/socket',
+    const socketIo = io('/', {
+      transports: ['websocket'],
     });
 
     setSocket(socketIo);

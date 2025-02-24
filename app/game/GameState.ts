@@ -21,19 +21,23 @@ export class GameState {
 
   private setupSocketListeners() {
     this.socket.on('connect', () => {
+      if (!this.socket.id) return;
+      
       this.localPlayerId = this.socket.id;
-      this.addPlayer(this.socket.id, {
+      const player: Player = {
         id: this.socket.id,
         x: Math.random() * window.innerWidth,
         y: Math.random() * window.innerHeight,
         color: this.getRandomColor(),
-      });
+      };
+      
+      this.addPlayer(this.socket.id, player);
       
       // Notify other players
       this.socket.emit('player:join', {
-        x: this.players.get(this.socket.id)?.x,
-        y: this.players.get(this.socket.id)?.y,
-        color: this.players.get(this.socket.id)?.color,
+        x: player.x,
+        y: player.y,
+        color: player.color,
       });
     });
 

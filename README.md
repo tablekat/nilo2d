@@ -18,6 +18,7 @@ A real-time multiplayer 2D web game built with Next.js and TypeScript. Players c
 - Socket.IO for real-time communication
 - HTML5 Canvas for rendering
 - CSS Modules for styling
+- Custom server setup for WebSocket support
 
 ## Prerequisites
 
@@ -40,11 +41,6 @@ npm install
 yarn install
 ```
 
-3. Create a `.env.local` file in the root directory:
-```bash
-NEXT_PUBLIC_SOCKET_URL=http://localhost:3000
-```
-
 ## Development
 
 To run the development server:
@@ -59,6 +55,18 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 To test multiplayer functionality, open multiple browser windows pointing to the same URL.
 
+## Production
+
+To build and run in production:
+
+```bash
+npm run build
+npm run start
+# or
+yarn build
+yarn start
+```
+
 ## Project Structure
 
 - `app/` - Next.js app directory containing all pages and components
@@ -66,9 +74,8 @@ To test multiplayer functionality, open multiple browser windows pointing to the
   - `layout.tsx` - Root layout component
   - `globals.css` - Global styles
   - `page.module.css` - Styles specific to the main page
-  - `api/socket/` - Socket.IO API route
   - `game/` - Game logic and state management
-- `server/` - Server-side code for Socket.IO handling
+- `server.js` - Custom server setup for Next.js and Socket.IO
 
 ## Game Controls
 
